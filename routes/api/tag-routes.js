@@ -29,7 +29,7 @@ router.get('/:id', async (req, res) => {
 // be sure to include its associated Product data
 
 
-router.put('/', async (req, res) => {
+router.post('/', async (req, res) => {
   // create a new tag
   try {
     const ProductTag = await Tag.create(req.body);
@@ -46,7 +46,7 @@ router.put('/:id', async (req, res) => {
         id: req.params.id,
       }
     });
-    if (!tagId[0]) {
+    if (!tagId) {
       res.status(404).json({ message: "No category found with this id." });
       return;
     }
